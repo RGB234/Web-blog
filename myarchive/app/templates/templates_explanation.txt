@@ -1,0 +1,7 @@
+<base.html>
+모든 html에 공통으로 포함되는 요소를 작성한 틀
+
+<login.html>
+flask 서버 구동 시 가장 먼저 보여지는 화면을 구현한 html
+로그인 양식이 적절히 채워진 후 로그인 버튼을 누른다면 mypage.html로 넘어간다
+signup 버튼을 누른다면 계정생성을 위한 html로 넘어간다

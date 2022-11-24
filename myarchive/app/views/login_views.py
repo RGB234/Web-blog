@@ -1,14 +1,15 @@
-from flask import Blueprint, url_for, render_template, request, session
+from flask import Blueprint, url_for, render_template, flash, request, session
 from werkzeug.utils import redirect
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
-from ..forms import UserLoginForm
+from myarchive import db
+from ..forms import UserLoginForm, UserCreateForm
 from ..models import User
 
 bp = Blueprint('login', __name__, url_prefix='/')
 
-@bp.route('/login/', methods=('GET', 'POST'))
-def _submit():
+@bp.route('/', methods=('GET', 'POST'))
+def _login():
     
     ''' login.html 렌더링(request.method == 'GET') '''
     ''' 로그인 양식(UserLoginform)을 적절하게 채워서 제출(request.method == 'Post')하면 mypage.homepage호출'''
@@ -16,7 +17,7 @@ def _submit():
 
     form = UserLoginForm()
     #request는 flask에서 자동제공 참조:https://velog.io/@sangmin7648/%EC%98%A4%EB%8A%98%EC%9D%98-%EB%B0%B0%EC%9B%80-045
-    if request.method == 'POST' and form.validate_on_submit():
+    if request.method == 'POST' and form.validate_on_submit(): #UserLoginForm()을 채운 뒤 로그인버튼을 누르면
         error = None
         user = User.query.filter_by(username=form.username.data).first() #검색
         if not user:
@@ -33,7 +34,24 @@ def _submit():
             '''mypage_views.py의 bp이름이 mypage, mapage_views.py의 라우트 함수들중 하나의 이름이 homepage'''
             '''mypage_views.py의 (라우트)함수 homepage 호출, flask 서버 구동중에는 영구히 사용 가능'''
             return redirect(url_for('mypage.homepage'))
-    #request.method == 'GET'인 경우, (GET 요청 방식인 경우)
+    #request.method == 'GET'인 경우, (GET 요청 방식인 경우), 로그인 시도 없이 _login함수가 불려왔을 때
     return render_template('login.html', form=form)
 
-    
+@bp.route('/signup/', methods=('GET', 'POST'))
+def signup():
+    '''계정 등록 페이지로 이동 및 계정 등록'''
+    form = UserCreateForm()
+    if request.metho == 'POST' and form.validate():
+        error = None
+        user = User.query.filter_by(username=form.username.data)
+        if not user:
+            user = User(username=form.username.data,
+                        password=generate_password_hash(form.password1.data),
+                        email=form.email.data)
+            db.session.add(user)
+            db.session.commit() #db변경사항 저장
+            return render_template(redirect(url_for('login._login'))) #로그인 화면으로 이동
+        else:
+            flash('이미 등록된 사용자입니다')
+
+    return render_template('signup.html', form=form)

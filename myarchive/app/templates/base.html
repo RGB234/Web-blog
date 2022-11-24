@@ -1,0 +1,27 @@
+<!-- 모든 html에 공통으로 포함 될 base.html -->
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+        <!-- custom css -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <!-- base.html에 추가될 다른 html 파일 start-->
+        {% block content %}
+        {% endblock %}
+        <!-- base.html에 추가될 다른 html 파일 end-->
+
+        <!-- jQuery Js -->
+        <!-- Bootstrap Js -->
+
+        <!-- javascript start -->
+        {% block script %}
+        {% endblock %}
+        <!-- javascript end -->
+    </body>
+</html>
