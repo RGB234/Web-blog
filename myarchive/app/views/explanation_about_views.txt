@@ -1,0 +1,11 @@
+웹 사이트가 작동하는 방식을 결정짓는 설계도? 같은 것
+
+코드 내 상황에 따라 다른 views 파일로 연결되기도 하고 html파일을 출력하기도 한다
+
+<login_views>
+플라스크 서버 구동시 가장 먼저 보여주는 화면, 처음에는 login.html화면을 보여주다가 (처음에는 서버에서 GET방식으로 request하므로)
+적절한 값을 (models.py에 정의한 UserLoginForm에)채워 로그인을 시도하면 POST방식으로 서버에 request하여 
+mypage_views.py의 homepage함수로 넘어간다. 이 떄 homepage함수에다가 입력한 UserLoginForm 내용을 그대로 넘긴다
+
+<mypage_views>
+아직 구현중

@@ -1,0 +1,35 @@
+<__init__.py>
+플라스크 실행시 기본 앱 (myarchive.cmd에서 FLASK_APP = myarchive)이 되는 파일
+
+naming_convention
+'''
+SQLAlchemy 이름을 랜덤으로 형성할 때의 제약조건, 
+이 제약이 없으면 SQLite에서는 "Constraint must have a name"라는 오류발생 
+(MySQL, PostgreSQL과는 무관)
+reference: https://alembic.sqlalchemy.org/en/latest/naming.html
+'''
+
+db와 migrate는 전역으로 정의해야만 다른 모듈에서도 불러와서 쓸 수 있다.
+db는 SQLAlchemy를 상속하여 만든 데이터베이스, 
+migrate는 SQLAlchemy database에서 서버와의 소통(migration)을 담당하는 flask application이다
+reference(flask migrate: https://flask-migrate.readthedocs.io/en/latest/)
+
+db와 migrate의 정의는 __init__에서 전역으로 하되, 다른 모듈에서 불러올 때마다 함수 내부에서 초기화를 실행한다
+
+<forms.py>
+FlaskForm를 상속하여 필요한 form을 만든다. 
+폼은 사용자에게 입력 양식을 편하게 제공하기 위해 사용되며, FlaskForm에서 지원하는 여러 모듈(혹은 함수)를 이용하면 
+데이터 검증을 하기 쉬워진다. 
+즉, 해당 양식이 웹서버로 제출되었는지, 데이터가 서버에 저장된 값과 일치하는지, 올바른 양식을 사용했는지 등등 을 알 수 있다
+(validate_on_submit, check_password_hash 등등)
+
+What is Flask form?
+The form is the basic element that lets users interact with our web application. 
+Flask alone doesn't do anything to help us handle forms, 
+but the Flask-WTF extension lets us use the popular WTForms package in our Flask applications. 
+This package makes defining forms and handling submissions easy.
+
+<models.py>
+db.Model을 상속하여 필요한 model을 만듬
+db는 SQLAlchemy를 상속해 만든 객체이며
+db.Model은 SQLAlcheymy에서 제공하는 데이터베이스 테이블이다

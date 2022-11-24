@@ -3,7 +3,10 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 
-'''SQLAlchemy 이름을 랜덤으로 형성할 때의 제약조건, 
+from .views import login_views, mypage_views
+
+'''
+SQLAlchemy 이름을 랜덤으로 형성할 때의 제약조건, 
 이 제약이 없으면 SQLite에서는 "Constraint must have a name"라는 오류발생 
 (MySQL, PostgreSQL과는 무관)
 reference: https://alembic.sqlalchemy.org/en/latest/naming.html
@@ -25,7 +28,12 @@ def create_app():
     app.config.from_envvar('APP_CONFIG_FILE') #myarchive.cmd에서 APP_CONFIG_FILE = development.py 로 설정
 
     db.init_app(app)
-    migrate.init_app(app, db)
+    migrate.init_app(app, db, render_as_batch=True)
+
+    #blueprint
+    from .views import login_views
+    app.register_blueprint(mypage_views.bp)
+    app.register_blueprint(login_views.bp)
 
     return app
 

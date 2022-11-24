@@ -3,6 +3,8 @@ from werkzeug.utils import redirect
 
 from ..forms import UserLoginForm
 
-bp = Blueprint('main', __name__, url_prefix='/main')
+bp = Blueprint('mypage', __name__, url_prefix='/mypage')
 
-def _homepage(id, pw):
+@bp.route('/<str:username>/')
+def homepage():
+    return None
