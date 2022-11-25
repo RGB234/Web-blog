@@ -3,7 +3,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 
-from .views import login_views, mypage_views
+from .views import login_views, mypage_views 
 
 '''
 SQLAlchemy 이름을 랜덤으로 형성할 때의 제약조건, 
