@@ -2,6 +2,7 @@
 @cd D:\development\flaskProject\myarchive
 @set FLASK_APP=app
 
+@REM D:\development\flaskProject\myarchive\app
 @REM development.py / production.py    development config choose
 @REM 'FLASK_ENV' is deprecated and will not be used in Flask 2.3. Use 'FLASK_DEBUG' instead.
 
