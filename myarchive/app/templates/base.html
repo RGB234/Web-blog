@@ -17,8 +17,10 @@
         <!-- base.html에 추가될 다른 html 파일 end-->
 
         <!-- jQuery Js -->
+        <script src="{{ url_for('static', filename='jquery-3.5.1.min.js') }}"></script>
         <!-- Bootstrap Js -->
-
+        <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+        
         <!-- javascript start -->
         {% block script %}
         {% endblock %}
