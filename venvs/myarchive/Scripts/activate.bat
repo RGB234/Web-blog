@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\development\venvs\myarchive
+set VIRTUAL_ENV=D:\development\flaskProject\venvs\myarchive
 
 if not defined PROMPT set PROMPT=$P$G
 
