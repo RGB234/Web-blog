@@ -1,4 +1,4 @@
-from myarchive import db #__init__.py 에서 생성한 SQLALchemy 객체
+from app import db #__init__.py 에서 생성한 SQLALchemy 객체
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)

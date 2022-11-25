@@ -2,7 +2,7 @@ from flask import Blueprint, url_for, render_template, flash, request, session
 from werkzeug.utils import redirect
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from myarchive import db
+from app import db
 from ..forms import UserLoginForm, UserCreateForm
 from ..models import User
 
@@ -33,7 +33,7 @@ def _login():
             '''라우트함수에서 역으로 url 주소추출 후 이 url 주소로 모듈연결'''
             '''mypage_views.py의 bp이름이 mypage, mapage_views.py의 라우트 함수들중 하나의 이름이 homepage'''
             '''mypage_views.py의 (라우트)함수 homepage 호출, flask 서버 구동중에는 영구히 사용 가능'''
-            return redirect(url_for('mypage.homepage'))
+            return redirect(url_for('mypage.homepage', user_id=user.id))
     #request.method == 'GET'인 경우, (GET 요청 방식인 경우), 로그인 시도 없이 _login함수가 불려왔을 때
     return render_template('login.html', form=form)
 
