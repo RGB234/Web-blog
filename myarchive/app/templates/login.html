@@ -1,24 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container my-3">
-    <form method="post" class="post-form">
-        <!-- csrf_token은 해당 form eliment에 전달된 데이터가 실제 웹 사이트에서 만들어진 데이터인지 검증하는데 필요하다 -->
-        {{ form.csrf_token }} 
-        {% include "errors.html" %}
-        <div class="form-group">
-            <label for="id">ID</label>
-            <input type="text" class="'form-control" name="id" id="id"
-                    value="{{ form.id.data or '' }}">
-                    <!-- form <<- UserLoginForm() -->
+<div class="overlay"></div>
+<div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="container">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carouself-caption d none d-md-block">
+                    <h1 class="carousel-title">포트폴리오 올리고 설명하기</h1>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carouself-caption d none d-md-block">
+                    <h1 class="carousel-title">나만의 학습 플래너</h1>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carouself-caption d none d-md-block">
+                    <h1 class="carousel-title">Q n A 및 협업 커뮤</h1>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="id">비밀번호</label>
-            <input type="text" class="'form-control" name="password" id="password"
-                    value="{{ form.password.data or '' }}">
-        </div>
-        <button type="submit" class="btn btn-info">로그인</button>
-    </form>
+    </div>
 </div>
+
 
 {% endblock %}
