@@ -1,28 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- carousel 구현중... -->
-<div class="overlay"></div>
-<div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-    <div class="container">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="carouself-caption d none d-md-block">
-                    <h1 class="carousel-title">포트폴리오 올리고 설명하기</h1>
-                </div>
+
+<div class="container my-3">
+    <img src="..pictues\icon.png"></a>
+    <div>My Archive</div>
+
+<div class="container my-3" style="width:40%">
+    <form method="post" class="post-form">
+    <!-- csrf 토큰은 데이터가 해당 사이트에서 생성된 데이터가 맞는지 확인하는데 사용됨 -->
+        {{ form.csrf_token }}
+        {% include "errors.html" %}
+        <div class="container my-3 form-group ">
+            <label for="userid">사용자 id</label>
+            <input type="text" class="form-control" name="userid" id="userid"
+                    value="{{ form.userid.data or '' }}">
+        </div>
+        <div class="container my-3 form-group">
+            <label for="password">비밀번호</label>
+            <input type="text" class="form-control" name="password" id="password"
+                    value="{{ form.password.data or '' }}">
+        </div>
+        <div class="container my-3">
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-weight: bold; font-size: large;">로 그 인</button>
+        </div>
+        <div class="container my-3">
+            <div style="float:left;">
+                <a class="btn btn-primary" href="signup.html">회원가입하기</a>
             </div>
-            <div class="carousel-item">
-                <div class="carouself-caption d none d-md-block">
-                    <h1 class="carousel-title">나만의 학습 플래너</h1>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carouself-caption d none d-md-block">
-                    <h1 class="carousel-title">Q n A 및 협업 커뮤</h1>
-                </div>
+            <div style="float:right">
+                <a class="btn btn-primary" href="#">아이디 찾기</a>
+                <a class="btn btn-primary" href="#">비밀번호 찾기</a>
             </div>
         </div>
-    </div>
+    </form>
 </div>
-
 
 {% endblock %}
