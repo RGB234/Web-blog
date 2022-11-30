@@ -1,39 +1,50 @@
 {% extends 'base.html' %}
 {% block content %}
+<style>
+    .background {
+        background-image: url("static/img/library.jpg");
+    }
+</style>
 
-<div class="container my-3">
-    <img src="..pictues\icon.png"></a>
-    <div>My Archive</div>
-</div>
+<div class="background">
+    <div class="container my-3" style="width:40%;">
+        <p>
+            <img src="static/img/icon.png"
+            style="height: 50%; width:50%; margin-left: 25%;">
+            <p style="text-align: center;">MyArchive</p>
+        </p>
+    </div>
 
-<div class="container my-3" style="width:40%">
-    <form method="post" class="post-form">
-    <!-- csrf 토큰은 데이터가 해당 사이트에서 생성된 데이터가 맞는지 확인하는데 사용됨 -->
-        {{ form.csrf_token }}
-        {% include "errors.html" %}
-        <div class="container my-3 form-group ">
-            <label for="userid">사용자 id</label>
-            <input type="text" class="form-control" name="userid" id="userid"
-                    value="{{ form.userid.data or '' }}">
-        </div>
-        <div class="container my-3 form-group">
-            <label for="password">비밀번호</label>
-            <input type="text" class="form-control" name="password" id="password"
-                    value="{{ form.password.data or '' }}">
-        </div>
-        <div class="container my-3">
-            <button type="submit" class="btn btn-primary" style="width: 100%; font-weight: bold; font-size: large;">로 그 인</button>
-        </div>
-        <div class="container my-3">
-            <div style="float:left;">
-                <a class="btn btn-primary" href="signup.html">회원가입하기</a>
+
+    <div class="container my-3" style="width:40%">
+        <form method="post" class="post-form">
+        <!-- csrf 토큰은 데이터가 해당 사이트에서 생성된 데이터가 맞는지 확인하는데 사용됨 -->
+            {{ form.csrf_token }}
+            {% include "errors.html" %}
+            <div class="container my-3 form-group ">
+                <label for="userid">사용자 id</label>
+                <input type="text" class="form-control" name="userid" id="userid"
+                        value="{{ form.userid.data or '' }}">
             </div>
-            <div style="float:right">
-                <a class="btn btn-primary" href="#">아이디 찾기</a>
-                <a class="btn btn-primary" href="#">비밀번호 찾기</a>
+            <div class="container my-3 form-group">
+                <label for="password">비밀번호</label>
+                <input type="text" class="form-control" name="password" id="password"
+                        value="{{ form.password.data or '' }}">
             </div>
-        </div>
-    </form>
+            <div class="container my-3">
+                <button type="submit" class="btn btn-primary" 
+                style="width: 100%; font-size: large;">로 그 인</button>
+            </div>
+            <div class="container my-3">
+                <div style="float:left; margin-right: 0.5em; margin-bottom: 0.5em;">
+                    <a class="btn btn-primary" href="signup.html">회원가입하기</a>
+                </div>
+                <div style="float:right;">
+                    <a class="btn btn-primary" href="#" style="margin-bottom: 0.5em;">아이디 찾기</a>
+                    <a class="btn btn-primary" href="#" style="margin-bottom: 0.5em;">비밀번호 찾기</a>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
-
 {% endblock %}
