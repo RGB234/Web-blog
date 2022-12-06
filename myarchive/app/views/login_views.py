@@ -35,7 +35,7 @@ def _login():
             '''mypage_views.py의 (라우트)함수 homepage 호출, flask 서버 구동중에는 영구히 사용 가능'''
             return redirect(url_for('mypage.homepage', user_id=user.userid))
         flash(error)
-    #request.method == 'GET'인 경우, (GET 요청 방식인 경우), 로그인 시도 없이 _login함수가 불려왔을 때
+    #request.method == 'GET'인 경우 (GET 요청 방식인 경우), 로그인 시도 없이 _login함수가 불려왔을 때
     return render_template('login.html', form=form)
 
 @bp.route('/signup/', methods=('GET', 'POST'))
