@@ -1,27 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
 <style>
+    :root {
+        --font-size-md: clamp(0.6rem, 1vw, 2rem)
+    }
     .background {
         background-image: url("static/img/library.jpg");
+        opacity: 0.95;
+        margin-top: 2em;
+        position: relative;
     }
+    #btn {
+        display: flex;
+        justify-content: space-between;
+        font-size: var(--font-size-md);
+    }
+    
 </style>
 
+
 <div class="background">
-    <div class="container my-3" style="width:40%;">
+    <div class="container my-3" style="width:30%; color: aquamarine; font-size: 200%;">
         <p>
             <img src="static/img/icon.png"
-            style="height: 50%; width:50%; margin-left: 25%;">
+            style="height: 50%; width:50%; margin-left: 25%; padding-top: 1em;">
             <p style="text-align: center;">MyArchive</p>
         </p>
     </div>
 
 
-    <div class="container my-3" style="width:40%">
+    <div class="container my-3" style="width:40%; color: aquamarine; font-size: 100%;">
         <form method="post" class="post-form">
         <!-- csrf 토큰은 데이터가 해당 사이트에서 생성된 데이터가 맞는지 확인하는데 사용됨 -->
             {{ form.csrf_token }}
             {% include "errors.html" %}
-            <div class="container my-3 form-group ">
+            <div class="container my-3 form-group">
                 <label for="userid">사용자 id</label>
                 <input type="text" class="form-control" name="userid" id="userid"
                         value="{{ form.userid.data or '' }}">
@@ -31,11 +44,20 @@
                 <input type="text" class="form-control" name="password" id="password"
                         value="{{ form.password.data or '' }}">
             </div>
-            <div class="container my-3">
+            <div class="container my-4">
                 <button type="submit" class="btn btn-primary" 
                 style="width: 100%; font-size: large;">로 그 인</button>
             </div>
-            <div class="container my-3">
+            <div class="container my-4" id="btn">
+                <a class="btn btn-primary" href="signup.html", style="font-size: var(--font-size-md);">회원가입</a>
+                <p style="flex-grow: 1;"></p>
+                <a class="btn btn-primary" href="#", style="font-size: var(--font-size-md);">아이디 찾기</a>
+                <p style="flex-grow: 0.1;"></p>
+                <a class="btn btn-primary" href="#", style="font-size: var(--font-size-md);">비밀번호 찾기</a>
+
+            </div>
+            <p style="padding-bottom: 2em;"></p>
+            <!-- <div class="container my-3">
                 <div style="float:left; margin-right: 0.5em; margin-bottom: 0.5em;">
                     <a class="btn btn-primary" href="signup.html">회원가입하기</a>
                 </div>
@@ -43,7 +65,7 @@
                     <a class="btn btn-primary" href="#" style="margin-bottom: 0.5em;">아이디 찾기</a>
                     <a class="btn btn-primary" href="#" style="margin-bottom: 0.5em;">비밀번호 찾기</a>
                 </div>
-            </div>
+            </div> -->
         </form>
     </div>
 </div>
