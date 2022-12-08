@@ -6,7 +6,7 @@ from app import db
 from ..forms import UserLoginForm, UserCreateForm
 from ..models import User
 
-bp = Blueprint('login', __name__, url_prefix='/')
+bp = Blueprint('login', __name__, url_prefix='')
 
 @bp.route('/', methods=('GET', 'POST'))
 def _login():
@@ -47,10 +47,12 @@ def signup():
         user = User.query.filter_by(userid=form.userid.data).first()
         if not user:
             user = User(username=form.username.data,
+                        userid=form.userid.data,
                         password=generate_password_hash(form.password1.data),
                         email=form.email.data)
             db.session.add(user)
             db.session.commit() #db변경사항 저장
+            flash('회원가입이 완료되었습니다')
             return render_template(redirect(url_for('login._login'))) #로그인 화면으로 이동
         else:
             flash('이미 등록된 사용자입니다')
