@@ -6,7 +6,7 @@ from ..forms import UserLoginForm
 
 bp = Blueprint('mypage', __name__, url_prefix='/mypage')
 
-@bp.route('/<username>/')
-def homepage(user_id):
-    username = User.query.filter_by(id=user_id).first().username
-    return None
+@bp.route('/<user_name>/')
+def homepage(user_name):
+    username = User.query.filter_by(username=user_name).first().username
+    return render_template('homepage.html')

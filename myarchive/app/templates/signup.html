@@ -34,12 +34,12 @@
             {{ form.csrf_token }}
             {% include "errors.html" %}
             <div class="container my-3 form-group">
-                <label for="username">닉네임</label>
+                <label for="username">닉네임 (중복불가)</label>
                 <input type="text" class="form-control" name="username" id="username"
                         value="{{ form.username.data or '' }}">
             </div>
             <div class="container my-3 form-group">
-                <label for="userid">사용자 id</label>
+                <label for="userid">사용자ID (중복불가)</label>
                 <input type="text" class="form-control" name="userid" id="userid"
                         value="{{ form.userid.data or '' }}">
             </div>

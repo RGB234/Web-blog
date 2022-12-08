@@ -33,7 +33,7 @@ def _login():
             '''라우트함수에서 역으로 url 주소추출 후 이 url 주소로 모듈연결'''
             '''mypage_views.py의 bp이름이 mypage, mapage_views.py의 라우트 함수들중 하나의 이름이 homepage'''
             '''mypage_views.py의 (라우트)함수 homepage 호출, flask 서버 구동중에는 영구히 사용 가능'''
-            return redirect(url_for('mypage.homepage', user_id=user.userid))
+            return redirect(url_for('mypage.homepage', user_name=user.username))
         flash(error)
     #request.method == 'GET'인 경우 (GET 요청 방식인 경우), 로그인 시도 없이 _login함수가 불려왔을 때
     return render_template('login.html', form=form)
@@ -44,17 +44,20 @@ def signup():
     form = UserCreateForm()
     if request.method == 'POST' and form.validate():
         error = None
-        user = User.query.filter_by(userid=form.userid.data).first()
-        if not user:
-            user = User(username=form.username.data,
-                        userid=form.userid.data,
-                        password=generate_password_hash(form.password1.data),
-                        email=form.email.data)
-            db.session.add(user)
-            db.session.commit() #db변경사항 저장
-            flash('회원가입이 완료되었습니다')
-            return render_template(redirect(url_for('login._login'))) #로그인 화면으로 이동
+        if not User.query.filter_by(username=form.username.data).first(): #중복된 닉네임 걸러짐
+            if not User.query.filter_by(userid=form.userid.data).first(): #중복된 id 걸러짐
+                user = User(username=form.username.data,
+                            userid=form.userid.data,
+                            password=generate_password_hash(form.password1.data),
+                            email=form.email.data)
+                db.session.add(user)
+                db.session.commit() #db변경사항 저장
+                flash('회원가입이 완료되었습니다')
+                return render_template(redirect(url_for('login._login'))) #로그인 화면으로 이동
+            else:
+                flash('중복된 ID 입니다')
         else:
-            flash('이미 등록된 사용자입니다')
+            flash('중복된 닉네임입니다')
+        
 
     return render_template('signup.html', form=form)
