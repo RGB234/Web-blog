@@ -1,0 +1,47 @@
+.inner{
+    margin:auto;
+    width: 70%;
+    border: 3px;
+    padding: 10px;
+}
+
+.post-item{
+    float:left;
+    width: 30%;
+    margin: 0 0 50px 3%;
+}
+
+.post-item .thum{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    margin-bottom: 5px;
+    padding-bottom: 70%;
+}
+
+.post-item .title{
+    display: block;
+    overflow: hidden;
+    max-width: 95%;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.5;
+
+}
+
+.post-item .preview{
+    display: block;
+    overflow: hidden;
+    max-width: 95%;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.post-item .date{
+    display: block;
+    overflow: hidden;
+}

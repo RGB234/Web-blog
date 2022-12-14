@@ -30,6 +30,14 @@ class Post(db.Model): #작성한 글
     user = db.relationship('User', backref=db.backref('post_set')) #작성자
     #User모델 객체에서 .Post_set(backref) 을 통해 연결(relationship)된 Post객체를 불러올 수 있다
 
+class Category(db.Model): #글 분류 카테고리
+    id = db.Column(db.Integer, primary_key=True)
+    big_category = db.Column(db.String(100), nullable=True, server_default='None') #대분류
+    small_category = db.Column(db.String(100), nullable=True, server_default='None') #소분류
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'), nullable=False)
+    #Category 객체가 삭제되면 연결된 Post 객체의 Category 객체는 None(big)-None(small)이 되어야 한다
+    post = db.relationship('Post', backref=db.backref('category_set'))
+
 class Comment(db.Model): #글의 댓글
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
@@ -37,7 +45,7 @@ class Comment(db.Model): #글의 댓글
     content = db.Column(db.Text(), nullable=False) #댓글 내용
     create_date = db.Column(db.DateTime(), nullable=False)
     modify_date = db.Column(db.DateTime(), nullable=True)
-    post_id = db.Column(db.Integer, db.ForeignKey('Post.id', ondelete='CASCADE'), nullable=False) #댓글이 달린 글의 id
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete='CASCADE'), nullable=False) #댓글이 달린 글의 id
     post = db.relationship('Post', backref=db.backref('comment_set')) #댓글이 달린 글
 
     

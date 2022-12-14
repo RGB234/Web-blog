@@ -1,5 +1,63 @@
 {% extends 'base.html' %}
 {% block content %}
+{% include "navbar.html" %}
 <div class="container my-3">
+    <div class="content-wrap">
+        <article id="content">
+            <div class="post-header">
+                <h1>전체 글</h1>
+            </div>
+            <div class="inner">
+                <div class="post-item">
+                    <a href="#">
+                        <span class="thum">
+                            <img src="{{ url_for('static', filename='img/library.jpg') }}">
+                        </span>
+                        <span class="title">
+                            '거짓말의 과학' 특강 | 제2부 노력하지 않았다는 거짓말
+                        </span>
+                        <span class="preview">
+                            둘이 말하는거 보면, 서로 들리는 말보다 상대방 의도 파악하면서 계~속 얘기하는게 진짜 뇌로 대화하는 거 같음. 저 상태에선 말싸움이고 기싸움이고 없는 정말 순수한 정보 교환형태의 대화가 되는 것 같아 너무 재밌고 신기하게 봤어요!
+                        </span>
+                        <span class="date">
+                            2022.12.14
+                        </span>
+                    </a>
+                </div>
+                <div class="post-item">
+                    <a href="#">
+                        <span class="thum">
+                            <img src="{{ url_for('static', filename='img/library.jpg') }}">
+                        </span>
+                        <span class="title">
+                            제목
+                        </span>
+                        <span class="preview">
+                            설명
+                        </span>
+                        <span class="date">
+                            작성 시각
+                        </span>
+                    </a>
+                </div>
+                <div class="post-item">
+                    <a href="#">
+                        <span class="thum">
+                            <img src="{{ url_for('static', filename='img/library.jpg') }}">
+                        </span>
+                        <span class="title">
+                            제목
+                        </span>
+                        <span class="preview">
+                            설명
+                        </span>
+                        <span class="date">
+                            작성 시각
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </div>
 </div>
 {% endblock %}
