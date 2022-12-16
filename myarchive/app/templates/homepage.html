@@ -6,19 +6,21 @@
         <div class="area-main">
             <!-- article -->
             <div class="area-common">
-                <!-- 카테고리 -->
+                <!-- 선택된 카테고리 -->
                 <h2 class="article-category">
                     <b>전체 글</b>
                     <span>???개</span>
                 </h2>
                 <article class="article">
                     <a href="#" class="article-img">
-                        <img src="{{ url_for('static', filename='img/library.jpg') }}">
+                        <img src="{{ url_for('static', filename='img/test_img1.jfif') }}" class="thumbnail">
                     </a>
                     <div class="article-content">
                         <a href="#" class="link-article">
                             <!-- 제목 -->
-                            <strong class="title">'무협의 과학' 특강 | 주변에서 찾아보는 무협의 과학</strong>
+                            <p class="title">
+                                <b>'무협의 과학' 특강 | 주변에서 찾아보는 무협의 과학</b>
+                            </p>
                             <!-- 내용 -->
                             <p class="summary">안녕하세요 궤도님 그리고 이말년님! 항상 궤도님, 침착맨 영상 보고 있는 자사고 이과생입니다. 
                                 과학교육과를 꿈꾸고 있는지라 어떻게하면 더 쉽게, 재미있게, 흥미있게 과학을 (특히 물리를) 설명하는지에 대한 관심이 많습니다. 
@@ -31,9 +33,33 @@
                         </a>
                         <div class="box-meta">
                             <!-- 카테고리 -->
-                            <a href="#" class="link-category">Category</a>
+                            <a href="#" class="link-category">(Category)Science</a>
                             <!-- 작성일 -->
                             <span class="date">2022.12.15</span>
+                        </div> 
+                    </div>
+                </article>
+                <article class="article">
+                    <a href="#" class="article-img">
+                        <img src="{{ url_for('static', filename='img/test_img2.jpg') }}" class="thumbnail">
+                    </a>
+                    <div class="article-content">
+                        <a href="#" class="link-article">
+                            <!-- 제목 -->
+                            <p class="title">
+                                <b>'누리호의 과학' 특강 | 누리호의 성공 분석</b>
+                            </p>
+                            <!-- 내용 -->
+                            <p class="summary">솔직히 과학에 크게 관심이 없을 뿐더러 그냥 무지성으로 '과학에 투자해야지~ 연구해야지~' 말곤 별 생각이 없었는데
+                                궤도님의 영상을 본 이후로 우리나라 과학 연구진이 이렇게나 열악한 환경에서 대단한 업적을 일궈내시느라 노고가 많으셨다는 것에 대한 존경심과 더불어
+                                과학에 대한 관심이 생겼어요. 궤도님 짱! 앞으로도 과학 커뮤니케이터 과학 애호가로서 오래오래 함께 해주세요~!!!
+                            </p>
+                        </a>
+                        <div class="box-meta">
+                            <!-- 카테고리 -->
+                            <a href="#" class="link-category">(Category)Science</a>
+                            <!-- 작성일 -->
+                            <span class="date">2022.12.16</span>
                         </div> 
                     </div>
                 </article>
