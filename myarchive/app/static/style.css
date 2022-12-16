@@ -48,6 +48,7 @@ a:hover{
 
 .article .article-img .thumbnail{
     margin: auto;
+    width: auto;
 }
 
 .article .article-content{
