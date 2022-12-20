@@ -3,15 +3,14 @@ a {
     color: inherit;
 }
 
-a:hover{ 
-    text-decoration: underline black 1.5px;
+a:hover {
+    text-decoration: none;
     color: inherit;
 }
 
 .main{
     width: 100%;
-    max-width: 1020px;
-    margin: 0 auto;
+    margin: 0 5%;
 }
 
 .area-main{
@@ -34,43 +33,59 @@ a:hover{
     display: flex;
     flex-direction: row-reverse;
     padding: 20px 0;
+    text-decoration: none;
 }
 
 
 .article .article-img{
     display: block;
-    width: 240px;
-    height: 140px;
+    position: relative;
     overflow: hidden;
+    width: 240px;
+    height: 120px;
     margin-bottom: 5px;
-    padding-bottom: 100;
 }
 
-.article .article-img .thumbnail{
-    margin: auto;
+.article .article-img img{
+    width: 100%;
+    height: auto;
 }
 
 .article .article-content{
+    min-width: 75px;
     max-width: 480px;
     margin: 0 5px 0 0;
-    padding: 0 20px 0 0;
+    padding: 0 15px 0 0;
 }
 
 .article .article-content .title{
+    display: block;
+    line-clamp: 1;
     font-size: 15px;
     font-weight: 600;
-    padding: 2px 0px;
-    line-height: 1;
+    padding: 0px 0px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.article:hover .title{
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    color: inherit;
 }
 
 .article .article-content .summary{
+    display: block;
+    line-clamp: 3;
     max-height: 80px;
     font-size: 13px;
     line-height: 1.5;
+    display: -webkit-box; /*line-clamp 사용하기 위함*/
     overflow: hidden;
-    line-clamp: 3;
     -webkit-line-clamp: 3;
-    text-decoration: none !important;
+    -webkit-box-orient: vertical; /*line-clamp 사용하기 위함*/
 }
 
 .article .box-meta{
@@ -78,4 +93,10 @@ a:hover{
     height: 30px;
     font-size: 12px;
     font-weight: 500;
+}
+
+.article .box-meta .link-category:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 1.2px;
+    color:inherit;
 }
