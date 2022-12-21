@@ -12,14 +12,9 @@ a:hover {
     width: 100%;
     margin: 0 5%;
 }
-
+/* area-main 본문 글 > article-category 글 분류 카테고리 & article 글(사진, 제목, 내용, 작성일 등) */
 .area-main{
-    width: 100%;
-    max-width: 640px;
-}
-
-.area-common{
-    margin: 0 auto;
+    width: 640px;
 }
 
 .article-category{
@@ -33,27 +28,27 @@ a:hover {
     display: flex;
     flex-direction: row-reverse;
     padding: 20px 0;
-    text-decoration: none;
 }
 
 
 .article .article-img{
-    display: block;
     position: relative;
     overflow: hidden;
-    width: 240px;
+    width: 180px;
+    min-width: 1px;
     height: 120px;
     margin-bottom: 5px;
+    padding-right: 5px;
 }
 
 .article .article-img img{
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 .article .article-content{
-    min-width: 75px;
-    max-width: 480px;
+    display: inline-block;
+    width: 480px;
     margin: 0 5px 0 0;
     padding: 0 15px 0 0;
 }
@@ -99,4 +94,9 @@ a:hover {
     text-decoration: underline;
     text-decoration-thickness: 1.2px;
     color:inherit;
+}
+
+/* .area-aside 본문 내용 옆에 사이드바(현재는 category 분류bar로 사용중)*/
+.area-aside{
+    Width: 240px;
 }

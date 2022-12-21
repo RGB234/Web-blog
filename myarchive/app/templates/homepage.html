@@ -3,68 +3,290 @@
 {% include "navbar.html" %}
 <div class="container my-3">
     <main class="main">
+        <!-- article -->
         <div class="area-main">
-            <!-- article -->
-            <div class="area-common">
-                <!-- 선택된 카테고리 -->
-                <h2 class="article-category">
-                    <b>전체 글</b>
-                    <span>???개</span>
-                </h2>
-                <article class="article">
-                    <a href="#" class="article-img">
-                        <img src="{{ url_for('static', filename='img/test_img1.jfif') }}">
+            <!-- 선택된 카테고리 -->
+            <h2 class="article-category">
+                <b>전체 글</b>
+                <span>???개</span>
+            </h2>
+            <!-- test article 1 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img1.jfif') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>'무협의 과학' 특강 | 주변에서 찾아보는 무협의 과학</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">안녕하세요 궤도님 그리고 이말년님! 항상 궤도님, 침착맨 영상 보고 있는 자사고 이과생입니다. 
+                            과학교육과를 꿈꾸고 있는지라 어떻게하면 더 쉽게, 재미있게, 흥미있게 과학을 (특히 물리를) 설명하는지에 대한 관심이 많습니다. 
+                            이런 저런 고민을 할때는 그냥 연구나 할까, 이 길이 아닌가 생각하기도 하지만, 
+                            어느새 궤도님이 해주시는 과학얘기에 빨려들어가있는 저를 발견하면 마음을 다잡곤 합니다. 
+                            과학은 참 흥미롭고 아름다우며 친근하면서도 인간의식의 정수라고 생각합니다! 이런 과학을 많은 분께, 
+                            그리고 저에게도 풀어주셔서 항상 영상 잘보고 있습니다:) 영상은 짧아졌지만 주기가 늘었다니 더 기분이 좋습니다. 
+                            오늘 영상도 잘봤고, 다음 영상도 기대하겠습니다! 저도 꿈을 위해 더 노력해 보도록 하겠습니다!
+                        </p>
                     </a>
-                    <div class="article-content">
-                        <a href="#" class="link-article">
-                            <!-- 제목 -->
-                            <p class="title">
-                                <b>'무협의 과학' 특강 | 주변에서 찾아보는 무협의 과학</b>
-                            </p>
-                            <!-- 내용 -->
-                            <p class="summary">안녕하세요 궤도님 그리고 이말년님! 항상 궤도님, 침착맨 영상 보고 있는 자사고 이과생입니다. 
-                                과학교육과를 꿈꾸고 있는지라 어떻게하면 더 쉽게, 재미있게, 흥미있게 과학을 (특히 물리를) 설명하는지에 대한 관심이 많습니다. 
-                                이런 저런 고민을 할때는 그냥 연구나 할까, 이 길이 아닌가 생각하기도 하지만, 
-                                어느새 궤도님이 해주시는 과학얘기에 빨려들어가있는 저를 발견하면 마음을 다잡곤 합니다. 
-                                과학은 참 흥미롭고 아름다우며 친근하면서도 인간의식의 정수라고 생각합니다! 이런 과학을 많은 분께, 
-                                그리고 저에게도 풀어주셔서 항상 영상 잘보고 있습니다:) 영상은 짧아졌지만 주기가 늘었다니 더 기분이 좋습니다. 
-                                오늘 영상도 잘봤고, 다음 영상도 기대하겠습니다! 저도 꿈을 위해 더 노력해 보도록 하겠습니다!
-                            </p>
-                        </a>
-                        <div class="box-meta">
-                            <!-- 카테고리 -->
-                            <a href="#" class="link-category">(Category)Science</a>
-                            <!-- 작성일 -->
-                            <span class="date">2022.12.15</span>
-                        </div> 
-                    </div>
-                </article>
-                <article class="article">
-                    <a href="#" class="article-img">
-                        <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.15</span>
+                    </div> 
+                </div>
+            </article>
+            <!-- test article 2 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>안될과학 궤도 X 침착맨 과학특강 '누리호의 과학' 특강 | 누리호의 성공 분석</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">솔직히 과학에 크게 관심이 없을 뿐더러 그냥 무지성으로 '과학에 투자해야지~ 연구해야지~' 말곤 별 생각이 없었는데
+                            궤도님의 영상을 본 이후로 우리나라 과학 연구진이 이렇게나 열악한 환경에서 대단한 업적을 일궈내시느라 노고가 많으셨다는 것에 대한 존경심과 더불어
+                            과학에 대한 관심이 생겼어요. 궤도님 짱! 앞으로도 과학 커뮤니케이터 과학 애호가로서 오래오래 함께 해주세요~!!!
+                        </p>
                     </a>
-                    <div class="article-content">
-                        <a href="#" class="link-article">
-                            <!-- 제목 -->
-                            <p class="title">
-                                <b>안될과학 궤도 X 침착맨 과학특강 '누리호의 과학' 특강 | 누리호의 성공 분석</b>
-                            </p>
-                            <!-- 내용 -->
-                            <p class="summary">솔직히 과학에 크게 관심이 없을 뿐더러 그냥 무지성으로 '과학에 투자해야지~ 연구해야지~' 말곤 별 생각이 없었는데
-                                궤도님의 영상을 본 이후로 우리나라 과학 연구진이 이렇게나 열악한 환경에서 대단한 업적을 일궈내시느라 노고가 많으셨다는 것에 대한 존경심과 더불어
-                                과학에 대한 관심이 생겼어요. 궤도님 짱! 앞으로도 과학 커뮤니케이터 과학 애호가로서 오래오래 함께 해주세요~!!!
-                            </p>
-                        </a>
-                        <div class="box-meta">
-                            <!-- 카테고리 -->
-                            <a href="#" class="link-category">(Category)Science</a>
-                            <!-- 작성일 -->
-                            <span class="date">2022.12.16</span>
-                        </div> 
-                    </div>
-                </article>
-            </div>
-            <!-- category menu -->
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.16</span>
+                    </div> 
+                </div>
+            </article>
+            <!-- test article 3 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>'공포의 과학' 특강 | 제2부 시청자 사연 분석</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">오ㅏ 가위가 왜 눌리는지 과학적으로 풀어주시니 가위 눌리는 게 무섭지 않아졌어요..ㅋㅋ
+                        </p>
+                    </a>
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.21</span>
+                    </div> 
+                </div>
+            </article>
+            <!-- test article 4 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>납량특집 공포 사연 낭독회</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">오늘 인생이 반은 재미없어지는 깨달음을 얻었다..
+                        </p>
+                    </a>
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.21</span>
+                    </div> 
+                </div>
+            </article>
+            <!-- test article 5 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>'연애의 과학' 특강 | 제1부 몸풀기와 신규 코너</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">박정민수님의 소름돋는 집에가는 연기가 일품
+                        </p>
+                    </a>
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.21</span>
+                    </div> 
+                </div>
+            </article>
+            <!-- test article 6 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>매력있는 악역/악당 월드컵</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">방장에게 공포감을 심어주는 궤도 선생님 너무 감사하다
+                        </p>
+                    </a>
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.21</span>
+                    </div> 
+                </div>
+            </article>
+            <!-- test article 7 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>'유사과학' 특강 | 제1부 유사과학에 관한 몸풀기 퀴즈</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">
+                            Dor Zarryts
+                            12일 전
+                            요약 : 나약한 자들만 공포를 느낀다.
+                        </p>
+                    </a>
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.21</span>
+                    </div> 
+                </div>
+            </article>
+            <!-- test article 8 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>좀비사태 발생시 피신할 장소 월드컵</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">추석 명절을 겨냥한 과학종합선물세트...
+                            너무 감사하다...
+                        </p>
+                    </a>
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.21</span>
+                    </div> 
+                </div>
+            </article>
+            <!-- test article 9 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>안심하세요 해적입니다</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">이렇게 1시간 30분이 넘는 영상을, 쉬지 않고 웃으며 본 적이 언제였는지 기억이 안 남… 편집자님의 노고에 항상 감사드립니다… 행복하십쇼,,                       
+                        </p>
+                    </a>
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.21</span>
+                    </div> 
+                </div>
+            </article>
+            <!-- test article 10 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>'히어로의 과학' 특강 | 제2부 하루종일 설명할 수도 있어</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">제가 원래 샤워하면서 귀신 나울까봐 되게 무서워했는데 예전에 궤도님이 말씀하신 전자의 반발력을 적용시켜보니 하나도 무섭지 않아졌어요
+                            귀신의 모습이 보인다는 것은 귀신이 실체가 있거나 빛에 반사가 될 만큼의 에너지를 가지고 있다고 할 수 있죠
+                            또한 귀신이 저에게 직접적인 해를 끼치기 위해서는 저의 전자를 밀어냄으로서 상호작용을 해야하는데 저는 앵간해서는 전자의 반발력 경쟁에서 지지않을 자신이 있습니다
+                            이렇게 생각하기 시작한 순간 샤워할 때는 괴물이 무서워졌습니다
+                            감사합니다
+                        </p>
+                    </a>
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.21</span>
+                    </div> 
+                </div>
+            </article>
+            <!-- test article 11 -->
+            <article class="article">
+                <a href="#" class="article-img">
+                    <img src="{{ url_for('static', filename='img/test_img2.jpg') }}">
+                </a>
+                <div class="article-content">
+                    <a href="#" class="link-article">
+                        <!-- 제목 -->
+                        <p class="title">
+                            <b>Paging test article 페이징 테스트용 11번째 글</b>
+                        </p>
+                        <!-- 내용 -->
+                        <p class="summary">...
+                        </p>
+                    </a>
+                    <div class="box-meta">
+                        <!-- 카테고리 -->
+                        <a href="#" class="link-category">(Category)Science</a>
+                        <!-- 작성일 -->
+                        <span class="date">2022.12.21</span>
+                    </div> 
+                </div>
+            </article>
+        <!-- category menu -->
+        </div class="area-aside">
+            <p>A</p>
+        <div>
+        </div>
+        <!-- paging -->
+        <div class="area-paging">
+
         </div>
     </main> 
 </div>
