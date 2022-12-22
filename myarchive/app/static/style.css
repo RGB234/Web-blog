@@ -14,7 +14,10 @@ a:hover {
 }
 /* area-main 본문 글 > article-category 글 분류 카테고리 & article 글(사진, 제목, 내용, 작성일 등) */
 .area-main{
-    width: 640px;
+    /* background-color: gray; */
+    float: left;
+    width: 720px;
+    padding: 0;
 }
 
 .article-category{
@@ -35,7 +38,6 @@ a:hover {
     position: relative;
     overflow: hidden;
     width: 180px;
-    min-width: 1px;
     height: 120px;
     margin-bottom: 5px;
     padding-right: 5px;
@@ -98,5 +100,22 @@ a:hover {
 
 /* .area-aside 본문 내용 옆에 사이드바(현재는 category 분류bar로 사용중)*/
 .area-aside{
-    Width: 240px;
+    /* background-color: gray; */
+    float: left;
+    Width: 320px;
+    padding-left: 80px;
+}
+
+.area-aside .navbar-category {
+    vertical-align: middle;
+}
+
+.area-aside .navbar-category li{
+    list-style: none;
+    font-size: 18px;
+    color: #777;
+}
+
+.area-aside .navbar-category .cnt{
+    font-size: 10px;
 }
