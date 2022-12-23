@@ -9,6 +9,7 @@ a:hover {
 }
 
 .main{
+    display: flex;
     width: 100%;
     margin: 0 5%;
 }
@@ -100,10 +101,10 @@ a:hover {
 
 /* .area-aside 본문 내용 옆에 사이드바(현재는 category 분류bar로 사용중)*/
 .area-aside{
-    /* background-color: gray; */
     float: left;
-    Width: 320px;
-    padding-left: 80px;
+    Width: 280px;
+    margin-top: 100px;
+    margin-left: 50px;
 }
 
 .area-aside .navbar-category {
@@ -118,4 +119,9 @@ a:hover {
 
 .area-aside .navbar-category .cnt{
     font-size: 10px;
+}
+
+div .area-pagination{
+    clear:both;
+    margin: 10px;
 }
