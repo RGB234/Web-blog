@@ -47,5 +47,3 @@ class Comment(db.Model): #글의 댓글
     modify_date = db.Column(db.DateTime(), nullable=True)
     post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete='CASCADE'), nullable=False) #댓글이 달린 글의 id
     post = db.relationship('Post', backref=db.backref('comment_set')) #댓글이 달린 글
-
-    
