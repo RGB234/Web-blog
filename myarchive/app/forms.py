@@ -14,5 +14,5 @@ class UserCreateForm(FlaskForm):
     email = EmailField('이메일', [DataRequired('이메일을 입력하십시오'), Email()])
 
 class PostingForm(FlaskForm):
-    subject = StringField('제목', validators=[DataRequired('제목을 입력하십시오')])
+    subject = StringField('제목', validators=[DataRequired('제목이 비어있습니다')])
     content = TextAreaField('내용', validators=[DataRequired('내용이 비어있습니다')])

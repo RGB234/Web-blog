@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, request
+from datetime import datetime
+from flask import Blueprint, render_template, url_for, request, session, g
 from werkzeug.utils import redirect
 
-from ..models import User
-from ..forms import UserLoginForm
+from app import db
+from ..models import User, Post
+from ..forms import UserLoginForm, PostingForm
 
 bp = Blueprint('mypage', __name__, url_prefix='/mypage')
 
@@ -14,6 +16,14 @@ def homepage(user_name):
     username = User.query.filter_by(username=user_name).first().username
     return render_template('homepage.html')
 
-@bp.route('/posting')
+@bp.route('/posting', methods=('GET', 'POST'))
 def posting():
-    return render_template('posting_form.html')
+    form = PostingForm()
+
+    if request.form == "POST" and form.validate_on_submit():
+        post = Post(subject=form.subject.data, content=form.content.data, create_date=datetime.now(), modify_date=datetime.now(), user=g.user)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('mypage.homepage'), user_name=g.username) #g = User.query.get(user_id), user_id = user.id (login_views.py)
+
+    return render_template('posting_form.html', form=form)

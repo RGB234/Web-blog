@@ -1,4 +1,4 @@
-from flask import Blueprint, url_for, render_template, flash, request, session
+from flask import Blueprint, url_for, render_template, flash, request, session, g
 from werkzeug.utils import redirect
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -29,7 +29,7 @@ def _login():
             session.clear()
             '''flask session에 key가 'user_id'이고 value(키값)는 user.id 인 (딕셔너리와 유사? 한)데이터 저장'''
             '''session은 request와 마찬가지로 플라스크에서 자동으로 '''
-            session['user_id'] = user.userid
+            session['user_id'] = user.id
             '''라우트함수에서 역으로 url 주소추출 후 이 url 주소로 모듈연결'''
             '''mypage_views.py의 bp이름이 mypage, mapage_views.py의 라우트 함수들중 하나의 이름이 homepage'''
             '''mypage_views.py의 (라우트)함수 homepage 호출, flask 서버 구동중에는 영구히 사용 가능'''
@@ -39,6 +39,7 @@ def _login():
     return render_template('login.html', form=form)
 
 @bp.route('/signup/', methods=('GET', 'POST'))
+#form = UserCreateForm() 이 POST방식으로 데이터를 전송하기 때문에 라우트 함수의 methods 에 "POST"를 전달해야됌
 def signup():
     '''계정 등록 페이지로 이동 및 계정 등록'''
     form = UserCreateForm()
@@ -61,3 +62,13 @@ def signup():
         
 
     return render_template('signup.html', form=form)
+
+@bp.before_app_request
+#라우트 함수보다 먼저 실행된다
+def load_logged_in_user():
+    user_id = session.get('user_id') #_login 함수에서 session[user_id] user.id (User 모델의 user.id, user.user_id가 아니다)
+    if user_id is None:
+        #g 는 플라스크에서 자동생성하는 전역변수이다
+        g.user = None
+    else:
+        g.user = User.query.get(user_id)
