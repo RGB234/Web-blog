@@ -4,7 +4,7 @@ from werkzeug.utils import redirect
 
 from app import db
 from ..models import User, Post
-from ..forms import UserLoginForm, PostingForm
+from ..forms import PostingForm
 
 bp = Blueprint('mypage', __name__, url_prefix='/mypage')
 

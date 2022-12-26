@@ -5,11 +5,11 @@ from app import db #__init__.py 에서 생성한 SQLALchemy 객체
 
 class User(db.Model): #유저계정
     '''primary_key 속성을 가진 id는 자동으로 값이 커짐'''
-    id = db.Column(db.Integer, primary_key=True, nullable=False) 
+    id = db.Column(db.Integer, primary_key=True) 
     '''
-    #primary_key 속성의 기본 키(db상의 id)로 지정 autoincrement
+    #primary_key 속성을 통해 해당 칼럼을 db 모델의 기본 키(id)로 지정
     nullable=False 속성 사용시 유의점: https://wikidocs.net/81059
-    db column 이 unique 속성을 가질 경우, db에 추가되지 않음 (예외처리가 필요)
+    db column 이 unique 속성을 가질 경우, 중복되는(unique하지 않은)값은 오류가 발생하며 db에 추가되지 않음 (예외처리가 필요)
     '''
     username = db.Column(db.String(60), unique=True, nullable=False)
     userid = db.Column(db.String(60), unique=True, nullable=False)

@@ -43,7 +43,7 @@ def _login():
 def signup():
     '''계정 등록 페이지로 이동 및 계정 등록'''
     form = UserCreateForm()
-    if request.method == 'POST' and form.validate():
+    if request.method == 'POST' and form.validate_on_submit():
         error = None
         if not User.query.filter_by(username=form.username.data).first(): #중복된 닉네임 걸러짐
             if not User.query.filter_by(userid=form.userid.data).first(): #중복된 id 걸러짐
@@ -54,12 +54,11 @@ def signup():
                 db.session.add(user)
                 db.session.commit() #db변경사항 저장
                 flash('회원가입이 완료되었습니다')
-                return render_template(redirect(url_for('login._login'))) #로그인 화면으로 이동
+                return redirect(url_for('login._login')) #로그인 화면으로 이동
             else:
                 flash('중복된 ID 입니다')
         else:
             flash('중복된 닉네임입니다')
-        
 
     return render_template('signup.html', form=form)
 
