@@ -62,6 +62,11 @@ def signup():
 
     return render_template('signup.html', form=form)
 
+@bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login._login'))
+
 @bp.before_app_request
 #라우트 함수보다 먼저 실행된다
 def load_logged_in_user():
