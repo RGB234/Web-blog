@@ -20,10 +20,10 @@ def homepage(user_name):
 def posting():
     form = PostingForm()
 
-    if request.form == "POST" and form.validate_on_submit():
+    if request.method == "POST" and form.validate_on_submit():
         post = Post(subject=form.subject.data, content=form.content.data, create_date=datetime.now(), modify_date=datetime.now(), user=g.user)
         db.session.add(post)
         db.session.commit()
-        return redirect(url_for('mypage.homepage'), user_name=g.username) #g = User.query.get(user_id), user_id = user.id (login_views.py)
+        return redirect(url_for('mypage.homepage', user_name=g.user.username)) #g.user = User.query.get(user_id), user_id = user.id (login_views.py)
 
     return render_template('posting_form.html', form=form)

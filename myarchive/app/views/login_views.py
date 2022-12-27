@@ -1,3 +1,5 @@
+import functools
+
 from flask import Blueprint, url_for, render_template, flash, request, session, g
 from werkzeug.utils import redirect
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -7,6 +9,15 @@ from ..forms import UserLoginForm, UserCreateForm
 from ..models import User
 
 bp = Blueprint('login', __name__, url_prefix='')
+
+#데코레이터 함수
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is None:
+            return redirect(url_for('login._login'))
+        return view(**kwargs)
+    return wrapped_view
 
 @bp.route('/', methods=('GET', 'POST'))
 def _login():
