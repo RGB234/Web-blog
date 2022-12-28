@@ -44,5 +44,10 @@ def create_app(): #애플리케이션 팩토리 함수, 반드시 create_app()�
     #오류페이지
     app.register_error_handler(404, page_not_found)
 
+    # 필터
+    from .filter import format_datetime
+    #datetime 이라는 이름으로 템플릿 필터 format_datetime 등록
+    app.jinja_env.filters['datetime'] = format_datetime
+
     return app
 
