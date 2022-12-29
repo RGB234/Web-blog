@@ -10,29 +10,29 @@
                 <b>전체 글</b>
                 <span>???개</span>
                 {% if g.user %}
-                <a href="{{ url_for('mypage.posting') }}" class="btn btn-secondary" style="float:right">글 작성하기</a>
+                <a href="{{ url_for('mypage.post_write') }}" class="btn btn-secondary" style="float:right">글 작성하기</a>
                 {% endif %}
             </h2>
-            {% if posting_list %}
-            {% for posting in posting_list.items %}
-            <!-- posting_list 가 Pagination 객체이기 때문에 posting_list 대신 posting_list.items 사용해야 함 -->
+            {% if post_list %}
+            {% for post in post_list.items %}
+            <!-- post_list 가 Pagination 객체이기 때문에 post_list 대신 post_list.items 사용해야 함 -->
             <article class="article">
-                <a href="#" class="article-img">
+                <a href="{{ url_for('mypage.post_view', post_id=post.id) }}" class="article-img">
                     <img src="{{ url_for('static', filename='img/test_img1.jfif') }}">
                 </a>
                 <div class="article-content">
-                    <a href="#", class="link-article">
+                    <a href="{{ url_for('mypage.post_view', post_id=post.id) }}" class="link-article">
                         <p class="title">
-                            <b>{{ posting.subject }}</b>
+                            <b>{{ post.subject }}</b>
                         </p>
                         <p class="summary">
-                            {{ posting.content }}
+                            {{ post.content }}
                         </p>
                     </a>
                     <div class="box-meta">
                         <a href="#" class="link-category">(Category)</a>
-                        <span class="date">작성: {{ posting.create_date | datetime }}</span>
-                        <span class="date">수정: {{ posting.modify_date | datetime }}</span>
+                        <span class="date">작성: {{ post.create_date | datetime }}</span>
+                        <span class="date">수정: {{ post.modify_date | datetime }}</span>
                     </div>
                 </div>
             </article>
@@ -122,9 +122,9 @@
         <div class="area-pagination">
             <ul class="pagination justify-content-center">
                 <!-- 이전 페이지 -->
-                {% if posting_list.has_prev %}
+                {% if post_list.has_prev %}
                 <li>
-                    <a class="page-link" href="?page={{ posting_list.prev_num }}"> < </a>
+                    <a class="page-link" href="?page={{ post_list.prev_num }}"> < </a>
                 </li>
                 {% else %}
                 <li>
@@ -132,9 +132,9 @@
                 </li>
                 {% endif %}
 
-                {% for page_num in posting_list.iter_pages() %}
+                {% for page_num in post_list.iter_pages() %}
                     {% if page_num %}
-                        {% if page_num != posting_list.page %}
+                        {% if page_num != post_list.page %}
                         <!-- 현재 페이지가 아니라면 -->
                         <li class="page-item">
                             <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
@@ -153,9 +153,9 @@
                 {% endfor %}
 
                 <!-- 다음 페이지 -->
-                {% if posting_list.has_next %}
+                {% if post_list.has_next %}
                 <li>
-                    <a class="page-link" href="?page={{ posting_list.next_num }}"> > </a>
+                    <a class="page-link" href="?page={{ post_list.next_num }}"> > </a>
                 </li>
                 {% else %}
                 <li>

@@ -13,14 +13,14 @@ def homepage(user_name):
     page = request.args.get('page', type=int, default=1) #URL 에 page 값이 없으면 자동으로 1 적용
     #GET요청방식 URL에서 'page'값을 가져옴 ex)localhost:5000/mypage/<username>/?page=5
     
-    posting_list = Post.query.filter_by(user_id=g.user.id).order_by(Post.create_date.desc())
+    post_list = Post.query.filter_by(user_id=g.user.id).order_by(Post.create_date.desc())
 
-    posting_list = posting_list.paginate(page = page, per_page=10) #posting_list 는 단순 Post 모델이 아니라 Pagination 객체가 된다
+    post_list = post_list.paginate(page = page, per_page=10) #post_list 는 단순 Post 모델이 아니라 Pagination 객체가 된다
     username = User.query.filter_by(username=user_name).first().username
-    return render_template('homepage.html', posting_list=posting_list)
+    return render_template('homepage.html', post_list=post_list)
 
-@bp.route('/posting', methods=('GET', 'POST'))
-def posting():
+@bp.route('/post_write', methods=('GET', 'POST'))
+def post_write():
     form = PostingForm()
 
     if request.method == "POST" and form.validate_on_submit():
@@ -30,3 +30,10 @@ def posting():
         return redirect(url_for('mypage.homepage', user_name=g.user.username)) #g.user = User.query.get(user_id), user_id = user.id (login_views.py)
 
     return render_template('posting_form.html', form=form)
+
+@bp.route('/post_view')
+def post_view(post_id):
+
+    post = Post.query.filter_by(id=post_id)
+
+    return render_template('post_view.html', post=post)

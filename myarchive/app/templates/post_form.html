@@ -23,7 +23,16 @@
 
         <div class="form-group">
             <label for="content">내용</label>
-            <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.data or '' }}</textarea>
+            <textarea class="form-control ck-editor_editable" id="editor" name="content" id="content" rows="10">{{ form.content.data or '' }}</textarea>
+            <script>
+                ClassicEditor
+                    .create( document.querySelector('#editor'), {
+                        language: { ui: 'ko', content: 'ko' }
+                    })
+                    .catch( error => {
+                        console.error (error);
+                    });
+            </script>
         </div>
 
         <button type="submit" class="btn btn-primary">저장하기</button>
