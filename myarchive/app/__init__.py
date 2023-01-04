@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
-
+ 
 '''
 SQLAlchemy 이름을 랜덤으로 형성할 때의 제약조건, 
 이 제약이 없으면 SQLite에서는 "Constraint must have a name"라는 오류발생 
