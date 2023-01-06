@@ -1,3 +1,5 @@
+import re
+
 from datetime import datetime
 from flask import Blueprint, render_template, url_for, request, session, g
 from werkzeug.utils import redirect
@@ -24,12 +26,17 @@ def post_write():
     form = PostingForm()
 
     if request.method == "POST" and form.validate_on_submit():
-        post = Post(subject=form.subject.data, content=form.content.data, create_date=datetime.now(), modify_date=datetime.now(), user=g.user)
+        content_data = form.content.data
+        content_data = re.sub('&nbsp;', ' ', content_data) #공백
+        content_data = re.sub('</p>', '  ', content_data) #줄바꿈
+        content_data = re.sub('</h[0-9]>', '  ', content_data) #줄바꿈
+        content_data = re.sub('(<([^>]+)>)','', form.content.data); # 정규식(re) 사용하여 html 태그 제거
+        post = Post(subject=form.subject.data, content=content_data, create_date=datetime.now(), modify_date=datetime.now(), user=g.user)
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('mypage.homepage', user_name=g.user.username)) #g.user = User.query.get(user_id), user_id = user.id (login_views.py)
 
-    return render_template('posting_form.html', form=form)
+    return render_template('post_form.html', form=form)
 
 @bp.route('/post_view')
 def post_view(post_id):
