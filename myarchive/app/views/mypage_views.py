@@ -35,6 +35,7 @@ def post_write():
         post = Post(subject=form.subject.data, content=content_data, create_date=datetime.now(), modify_date=datetime.now(), user=g.user)
         db.session.add(post)
         db.session.commit()
+        
         return redirect(url_for('mypage.homepage', user_name=g.user.username)) #g.user = User.query.get(user_id), user_id = user.id (login_views.py)
 
     return render_template('post_form.html', form=form)
@@ -42,4 +43,5 @@ def post_write():
 @bp.route('/post_view/<int:post_id>')
 def post_view(post_id):
     post = Post.query.filter_by(id=post_id)
+
     return render_template('post_view.html', post=post)
