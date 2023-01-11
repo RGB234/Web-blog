@@ -27,10 +27,11 @@ def post_write():
 
     if request.method == "POST" and form.validate_on_submit():
         content_data = form.content.data
-        content_data = re.sub('&nbsp;', ' ', content_data) #공백
-        content_data = re.sub('</p>', '  ', content_data) #줄바꿈
-        content_data = re.sub('</h[0-9]>', '  ', content_data) #줄바꿈
-        content_data = re.sub('(<([^>]+)>)','', form.content.data); # 정규식(re) 사용하여 html 태그 제거
+        content_data = re.sub('&nbsp;', '\t', content_data) #공백
+        content_data = re.sub('</p>', '\n', content_data) #줄바꿈
+        content_data = re.sub('</h[0-9]>', '\n', content_data) #줄바꿈
+        content_data = re.sub('</code>', '\n', content_data) #코드블록 끝나면 줄바꿈
+        content_data = re.sub('(<([^>]+)>)','', content_data); # 정규식(re) 사용하여 html 태그 제거
         post = Post(subject=form.subject.data, content=content_data, create_date=datetime.now(), modify_date=datetime.now(), user=g.user)
         db.session.add(post)
         db.session.commit()
@@ -38,9 +39,7 @@ def post_write():
 
     return render_template('post_form.html', form=form)
 
-@bp.route('/post_view')
+@bp.route('/post_view/<int:post_id>')
 def post_view(post_id):
-
     post = Post.query.filter_by(id=post_id)
-
     return render_template('post_view.html', post=post)
