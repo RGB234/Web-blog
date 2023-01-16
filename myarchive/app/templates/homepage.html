@@ -15,7 +15,7 @@
             </h2>
             {% if post_list %}
             {% for post in post_list.items %}
-            <!-- post_list 가 Pagination 객체이기 때문에 post_list 대신 post_list.items 사용해야 함 -->
+            <!-- post_list 가 Pagination 객체이기 때문에 post_list 대신 post_list.items 사용해야 함 --> 
             <article class="article">
                 <a href="{{ url_for('mypage.post_view', post_id=post.id) }}" class="article-img">
                     <img src="{{ url_for('static', filename='img/test_img1.jfif') }}">

@@ -3,21 +3,31 @@
 {% include "navbar.html" %}
 <div class="container">
     <div class="container my-3">
-        <div>
-            test
+        <div class="post-header">
+            <div class="post-header-subject">{{ post.subject }}</div>
+            <div class="post-header-datetime">작성: {{ post.create_date | datetime }}</div>
+            {% if post.create_date != post.modify_date %}
+            <div class="post-header-datetime">수정: {{ post.modify_date | datetime }}</div>
+            {% else %}
+            <div class="post-header-datetime">수정: X </div>
+            {% endif %}
         </div>
-        <div>
-            <p>{{ post.create_date }}</p>
+        <div class="post-body"><div id="content"></div>
+            <script language="javascript">
+                let tmpStr = "{{ post.content }}";
+                tmpStr = tmpStr.replaceAll("&lt;", "<");
+                tmpStr = tmpStr.replaceAll("&gt;", ">");
+                tmpStr = tmpStr.replaceAll("&amp;", "&");
+                tmpStr = tmpStr.replaceAll('&nbsp;', ' ');
+                document.getElementById('content').innerHTML=tmpStr;
+            </script>
         </div>
-        <div>
-            <p>{{ post.modify_date }}</p>
-        </div>
-        <div>
-            <p>{{ post.subject }}</p>
-        </div>
-        <div>
-            <p>{{ post.content }}</p>
-        </div>
+    </div>
+    <div>
+        {% if g.user == post.user %}
+        <a href="{{ url_for('mypage.post_delete', post_id=post.id) }}" class="btn btn-secondary" style="float:right; margin:5px;">글 삭제하기</a>
+        <a href="{{ url_for('mypage.post_revision', post_id=post.id) }}" class="btn btn-secondary" style="float:right; margin:5px;">글 수정하기</a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
