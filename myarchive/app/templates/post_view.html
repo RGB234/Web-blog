@@ -12,14 +12,21 @@
             <div class="post-header-datetime">수정: X </div>
             {% endif %}
         </div>
-        <div class="post-body"><div id="content"></div>
-            <script language="javascript">
-                let tmpStr = "{{ post.content }}";
-                tmpStr = tmpStr.replaceAll("&lt;", "<");
-                tmpStr = tmpStr.replaceAll("&gt;", ">");
-                tmpStr = tmpStr.replaceAll("&amp;", "&");
-                tmpStr = tmpStr.replaceAll('&nbsp;', ' ');
-                document.getElementById('content').innerHTML=tmpStr;
+        <div class="post-body">
+            <textarea class="form-control ck-editor_editable" id="editor" name="content" id="content" rows="10">{{ post.content or '' }}</textarea>
+            <script>
+                ClassicEditor
+                    .create( document.querySelector('#editor'), {
+                        language: { ui: 'ko', content: 'ko' }
+                    })
+                    .then( editor => {
+                        editor.enableReadOnlyMode("editor");
+                        const toolbarElement = editor.ui.view.toolbar.element;
+                        toolbarElement.style.display = 'none';
+                    })
+                    .catch( error => {
+                        console.error (error);
+                    });
             </script>
         </div>
     </div>
